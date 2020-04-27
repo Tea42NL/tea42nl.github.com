@@ -11,11 +11,11 @@ function createListElement() {
 	var li = document.createElement("li");
 	li.appendChild(document.createTextNode(input.value));
 	li.addEventListener("click", toggleDone);
-	spanEle = createspan();
+	divEle = createDiv();
 	delEle = createDel();
-	ul.appendChild(spanEle);
-	spanEle.appendChild(li);
-	spanEle.appendChild(delEle);
+	ul.appendChild(divEle);
+	divEle.appendChild(li);
+	divEle.appendChild(delEle);
 	input.value = "";
 }
 
@@ -36,13 +36,13 @@ function toggleDone() {
 }
 
 function removeFromList() {
-	spanEle = this.parentNode;
-	ulEle = spanEle.parentNode;
-	ulEle.removeChild(spanEle);
+	divEle = this.parentNode;
+	ulEle = divEle.parentNode;
+	ulEle.removeChild(divEle);
 }
 
-function createSpan() {
-	return document.createElement("span");
+function createDiv() {
+	return document.createElement("div");
 }
 
 function createDel() {
@@ -52,11 +52,11 @@ function createDel() {
 	return block;
 }
 
-function wrapInSpan(item) {
-	spanEle = createSpan();
-	item.parentNode.insertBefore(spanEle,item);
-	spanEle.appendChild(item);
-	return spanEle;
+function wrapInDiv(item) {
+	divEle = createDiv();
+	item.parentNode.insertBefore(divEle,item);
+	divEle.appendChild(item);
+	return divEle;
 }
 
 function addDeleteButton(item) {
@@ -64,9 +64,9 @@ function addDeleteButton(item) {
 }
 
 for (i=0;i<lis.length;i++) {
-	currentSpan = wrapInSpan(lis[i]);
+	currentDiv = wrapInDiv(lis[i]);
 	lis[i].addEventListener("click", toggleDone);
-	addDeleteButton(currentSpan);
+	addDeleteButton(currentDiv);
 }
 
 button.addEventListener("click", addListAfterClick);
