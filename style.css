@@ -1,3 +1,7 @@
+div {
+  view: flex;
+}
+
 .coolTitle {
   text-align: center;
   font-family: 'Oswald', Helvetica, sans-serif;
